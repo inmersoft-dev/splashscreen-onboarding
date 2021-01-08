@@ -22,13 +22,14 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imageViewFlag"
-                android:layout_width="220dp"
+                android:layout_width="300dp"
 
                 android:layout_height="300dp"
                 android:layout_marginTop="24dp"
                 android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/image_rounded_style"
 
                 android:src="@drawable/splash_screen"
                 android:transitionName="small_flag"

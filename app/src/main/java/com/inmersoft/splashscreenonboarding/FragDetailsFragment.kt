@@ -40,6 +40,7 @@ class FragDetailsFragment : Fragment(R.layout.fragment_flag_description) {
         _binding = FragmentFlagDescriptionBinding.inflate(layoutInflater, container, false)
 
         Animate(_binding.buttonAnimate)
+        Animate(_binding.textView)
 
         _binding.buttonAnimate.setOnClickListener(View.OnClickListener {
             Animate(_binding.textView)
