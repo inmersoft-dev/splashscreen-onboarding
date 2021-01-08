@@ -1,10 +1,13 @@
 package com.inmersoft.splashscreenonboarding
 
+import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.os.Bundle
 import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.OvershootInterpolator
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -31,6 +34,13 @@ class FragDetailsFragment : Fragment(R.layout.fragment_flag_description) {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentFlagDescriptionBinding.inflate(layoutInflater, container, false)
+
+        val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.5f, 1f)
+        val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.5f, 1f)
+        val alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f)
+
+        ObjectAnimator.ofPropertyValuesHolder(_binding.textView, scaleX, scaleY, alpha)
+            .apply { interpolator = OvershootInterpolator() }.start()
 
         _binding.imageViewFlag.setOnClickListener {
             val extra = FragmentNavigatorExtras(_binding.imageViewFlag to "small_flag")
