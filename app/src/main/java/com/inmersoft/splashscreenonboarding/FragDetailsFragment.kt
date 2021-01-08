@@ -28,20 +28,21 @@ class FragDetailsFragment : Fragment(R.layout.fragment_flag_description) {
         sharedElementReturnTransition = animation
     }
 
+    val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.5f, 1f)
+    val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.5f, 1f)
+    val alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentFlagDescriptionBinding.inflate(layoutInflater, container, false)
 
-        val scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.5f, 1f)
-        val scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.5f, 1f)
-        val alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f)
+        Animate(_binding.buttonAnimate)
 
         _binding.buttonAnimate.setOnClickListener(View.OnClickListener {
-            ObjectAnimator.ofPropertyValuesHolder(_binding.textView, scaleX, scaleY, alpha)
-                .apply { interpolator = OvershootInterpolator() }.start()
+            Animate(_binding.textView)
         })
 
         _binding.imageViewFlag.setOnClickListener {
@@ -54,5 +55,9 @@ class FragDetailsFragment : Fragment(R.layout.fragment_flag_description) {
         return _binding.root
     }
 
+    private fun Animate(target: Any) {
+        ObjectAnimator.ofPropertyValuesHolder(target, scaleX, scaleY, alpha)
+            .apply { interpolator = OvershootInterpolator() }.start()
+    }
 
 }
