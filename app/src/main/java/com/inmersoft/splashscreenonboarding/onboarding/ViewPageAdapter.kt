@@ -21,4 +21,6 @@ class ViewPageAdapter(
         return fragmentList[position]
     }
 
+
+
 }
