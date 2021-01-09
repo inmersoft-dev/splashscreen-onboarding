@@ -21,7 +21,7 @@ class SecondOnboardingScreen : Fragment(R.layout.fragment_second_onboarding_scre
 
         val viewPageOnBoarding = activity?.findViewById<ViewPager2>(R.id.viewPageOnBoarding)
 
-        binding.txtSecondBtnNextPage.setOnClickListener {
+        binding.txtBtnNextPage.setOnClickListener {
             viewPageOnBoarding?.currentItem = 2
         }
 

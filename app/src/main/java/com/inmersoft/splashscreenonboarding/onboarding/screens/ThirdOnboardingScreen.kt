@@ -23,7 +23,7 @@ class ThirdOnboardingScreen : Fragment(R.layout.fragment_third_onboarding_screen
 
         val viewPageOnBoarding = activity?.findViewById<ViewPager2>(R.id.viewPageOnBoarding)
 
-        binding.txtThirdBtnNextPage.setOnClickListener {
+        binding.txtBtnNextPage.setOnClickListener {
             //onBoardingFinish()
             findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
         }

@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtFirstSplashTitle"
+        android:id="@+id/txtSplashTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="224dp"
@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txtFirstSplashDescription"
+        android:id="@+id/txtSplashDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtSplashTitle" />
 
     <TextView
-        android:id="@+id/txtFirstBtnNextPage"
+        android:id="@+id/txtBtnNextPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"

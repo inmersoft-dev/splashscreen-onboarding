@@ -22,7 +22,7 @@ class FirstOnboardingScreen : Fragment(R.layout.fragment_first_onboarding_screen
         binding = FragmentFirstOnboardingScreenBinding.inflate(layoutInflater, container, false)
         val viewPageOnBoarding = activity?.findViewById<ViewPager2>(R.id.viewPageOnBoarding)
 
-        binding.txtFirstBtnNextPage.setOnClickListener {
+        binding.txtBtnNextPage.setOnClickListener {
             viewPageOnBoarding?.currentItem = 1
         }
 

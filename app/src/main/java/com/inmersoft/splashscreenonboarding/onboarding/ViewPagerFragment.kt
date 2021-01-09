@@ -37,32 +37,12 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
             ViewPageAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
 
         binding.viewPageOnBoarding.adapter = adapter
+
         binding.viewPageOnBoarding.setPageTransformer(ViewPageTransformer())
 
         return binding.root
 
-/*
-        /** Setup View Pager **/
-        parallaxCarousel.adapter = PagerAdapter(photos, supportFragmentManager)
-        parallaxCarousel.setPageTransformer(false, PageTransformer())
-        setupPageDivider()
-        /** Setup Tab Dots **/
-        tab_dots.setupWithViewPager(parallaxCarousel, true)
-
- */
     }
-/*
-    private fun setupPageDivider() {
-
-        /** below 3 line of codes will make viewpager vertical white border **/
-        val px = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2f, resources.displayMetrics))
-        parallaxCarousel.pageMargin = px
-        parallaxCarousel.setPageMarginDrawable(R.color.divider)
-
-        /** below codes will make viewpager partial visible next/previous screen **/
-        /*parallaxCarousel.clipToPadding = false
-        parallaxCarousel.setPadding(48, 0, 48, 0)*/
-    }*/
 
 
 }
