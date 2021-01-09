@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
 import com.inmersoft.splashscreenonboarding.R
 import com.inmersoft.splashscreenonboarding.databinding.FragmentSecondOnboardingScreenBinding
 
@@ -18,13 +17,6 @@ class SecondOnboardingScreen : Fragment(R.layout.fragment_second_onboarding_scre
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSecondOnboardingScreenBinding.inflate(layoutInflater, container, false)
-
-        val viewPageOnBoarding = activity?.findViewById<ViewPager2>(R.id.viewPageOnBoarding)
-
-        binding.txtBtnNextPage.setOnClickListener {
-            viewPageOnBoarding?.currentItem = 2
-        }
-
 
         return binding.root
     }
