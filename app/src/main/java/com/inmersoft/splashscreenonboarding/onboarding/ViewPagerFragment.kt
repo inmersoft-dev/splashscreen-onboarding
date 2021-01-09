@@ -46,7 +46,7 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
 
 
         binding.floatingActionButton.setOnClickListener(View.OnClickListener {
-            if (binding.viewPageOnBoarding.currentItem == fragmentList.size-1) {
+            if (binding.viewPageOnBoarding.currentItem == fragmentList.size - 1) {
                 //Call  onBoardingFinish() HERE
                 findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
             } else {
