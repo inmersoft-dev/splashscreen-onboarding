@@ -10,9 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.inmersoft.splashscreenonboarding.R
 import com.inmersoft.splashscreenonboarding.databinding.FragmentViewPagerBinding
-import com.inmersoft.splashscreenonboarding.onboarding.screens.FirstOnboardingScreen
-import com.inmersoft.splashscreenonboarding.onboarding.screens.SecondOnboardingScreen
-import com.inmersoft.splashscreenonboarding.onboarding.screens.ThirdOnboardingScreen
 
 
 class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
@@ -31,8 +28,29 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
 
         // val view = inflater.inflate(R.layout.fragment_view_pager, container, false)
 
+        val firstPage = OnboardingScreen()
+        val data: Bundle = Bundle();
+        data.putInt("imgID", R.drawable.first_onboard_page);
+        data.putString("title", "SplashTitle-1");
+        data.putString("subtitle", "SplashSubTitle-1");
+        firstPage.arguments = data
+
+        val secondPage = OnboardingScreen()
+        val data2: Bundle = Bundle();
+        data2.putInt("imgID", R.drawable.secound_onboard_page);
+        data2.putString("title", "SplashTitle-2");
+        data2.putString("subtitle", "SplashSubTitle-2");
+        secondPage.arguments = data2
+
+        val thridPage = OnboardingScreen()
+        val data3: Bundle = Bundle();
+        data3.putInt("imgID", R.drawable.third_onboard_page);
+        data3.putString("title", "SplashTitle-3");
+        data3.putString("subtitle", "SplashSubTitle-3");
+        thridPage.arguments = data3
+
         val fragmentList = arrayListOf<Fragment>(
-            FirstOnboardingScreen(), SecondOnboardingScreen(), ThirdOnboardingScreen()
+            firstPage, secondPage, thridPage
         )
 
         val adapter =
@@ -46,6 +64,7 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
         binding.floatingActionButton.setOnClickListener(View.OnClickListener {
             if (binding.viewPageOnBoarding.currentItem == fragmentList.size - 1) {
                 //Call  onBoardingFinish() HERE
+                onBoardingFinish()
                 findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
             } else {
                 binding.viewPageOnBoarding.currentItem++
