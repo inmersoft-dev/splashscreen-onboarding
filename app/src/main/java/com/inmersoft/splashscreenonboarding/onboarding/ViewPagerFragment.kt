@@ -5,20 +5,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Interpolator
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-
 import com.inmersoft.splashscreenonboarding.R
 import com.inmersoft.splashscreenonboarding.databinding.FragmentViewPagerBinding
 import com.inmersoft.splashscreenonboarding.onboarding.screens.FirstOnboardingScreen
 import com.inmersoft.splashscreenonboarding.onboarding.screens.SecondOnboardingScreen
 import com.inmersoft.splashscreenonboarding.onboarding.screens.ThirdOnboardingScreen
 
+
 class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
 
     private lateinit var binding: FragmentViewPagerBinding
 
-    private var viewIndex = 0;
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +29,6 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
 
         binding = FragmentViewPagerBinding.inflate(layoutInflater, container, false)
 
-
         // val view = inflater.inflate(R.layout.fragment_view_pager, container, false)
 
         val fragmentList = arrayListOf<Fragment>(
@@ -39,11 +38,10 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
         val adapter =
             ViewPageAdapter(fragmentList, requireActivity().supportFragmentManager, lifecycle)
 
+
         binding.viewPageOnBoarding.adapter = adapter
 
         binding.viewPageOnBoarding.setPageTransformer(ViewPageTransformer())
-
-
 
         binding.floatingActionButton.setOnClickListener(View.OnClickListener {
             if (binding.viewPageOnBoarding.currentItem == fragmentList.size - 1) {
@@ -53,10 +51,19 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
                 binding.viewPageOnBoarding.currentItem++
             }
         })
-
-
         return binding.root
 
+    }
+
+
+    private fun setCustomScrollerToViewPager(interpolator: Interpolator, duration: Int) {
+        try {
+
+        } catch (e: NoSuchFieldException) {
+            e.printStackTrace()
+        } catch (e: IllegalAccessException) {
+            e.printStackTrace()
+        }
     }
 
     private fun onBoardingFinish() {
