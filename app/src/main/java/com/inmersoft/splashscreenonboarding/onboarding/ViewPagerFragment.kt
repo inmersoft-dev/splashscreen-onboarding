@@ -1,19 +1,27 @@
 package com.inmersoft.splashscreenonboarding.onboarding
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.preferencesKey
+import androidx.datastore.preferences.createDataStore
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.inmersoft.splashscreenonboarding.R
 import com.inmersoft.splashscreenonboarding.databinding.FragmentViewPagerBinding
+import kotlinx.coroutines.launch
 
 
 class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
 
     private lateinit var binding: FragmentViewPagerBinding
+
+
 
 
     override fun onCreateView(
@@ -63,8 +71,11 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
         binding.floatingActionButton.setOnClickListener(View.OnClickListener {
             if (binding.viewPageOnBoarding.currentItem == fragmentList.size - 1) {
                 //Call  onBoardingFinish() HERE
-                onBoardingFinish()
+                lifecycleScope.launch {
+                    onBoardingFinished()
+                }
                 findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
+
             } else {
                 binding.viewPageOnBoarding.currentItem++
             }
@@ -73,13 +84,16 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
 
     }
 
- 
+    suspend fun onBoardingFinished() {
+        val onBoardingDataStore: DataStore<Preferences> = requireContext().createDataStore(
+            name = "ON_BOARDING"
+        )
 
-    private fun onBoardingFinish() {
-        val sharedPref = requireActivity().getSharedPreferences("ON_BOARDING", Context.MODE_PRIVATE)
-        val edit = sharedPref.edit()
-        edit.putBoolean("ON_BOARDING_FINISHED", true)
-        edit.apply()
+        val OB_FINISHED = preferencesKey<Boolean>("ON_BOARDING_FINISHED")
+        onBoardingDataStore.edit { ON_BOARDING ->
+            ON_BOARDING[OB_FINISHED] = true
+        }
     }
+
 
 }
