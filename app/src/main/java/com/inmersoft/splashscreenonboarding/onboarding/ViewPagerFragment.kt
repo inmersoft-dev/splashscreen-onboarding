@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Interpolator
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.inmersoft.splashscreenonboarding.R
@@ -74,16 +73,7 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
 
     }
 
-
-    private fun setCustomScrollerToViewPager(interpolator: Interpolator, duration: Int) {
-        try {
-
-        } catch (e: NoSuchFieldException) {
-            e.printStackTrace()
-        } catch (e: IllegalAccessException) {
-            e.printStackTrace()
-        }
-    }
+ 
 
     private fun onBoardingFinish() {
         val sharedPref = requireActivity().getSharedPreferences("ON_BOARDING", Context.MODE_PRIVATE)
